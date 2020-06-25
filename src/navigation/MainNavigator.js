@@ -17,6 +17,7 @@ import SignIn from '../screens/signin/SignIn';
 import HomeNavigator from './HomeNavigator';
 import Product from '../screens/product/ProductDetail';
 import Orders from '../screens/orders/OrdersB';
+import EditProfile from '../screens/settings/EditProfile';
 // import colors
 import Colors from '../theme/colors';
 
@@ -56,7 +57,7 @@ function MainNavigator() {
             headerTintColor: Colors.onPrimaryColor,
             headerTitleAlign: 'center',
           }}>
-        
+
           <Stack.Screen
             name="Welcome"
             component={Welcome}
@@ -91,7 +92,7 @@ function MainNavigator() {
             component={HomeNavigator}
             options={{headerShown: false}}
           />
-      
+
           <Stack.Screen
             name="Product"
             component={Product}
@@ -108,7 +109,18 @@ function MainNavigator() {
               title: 'My Orders',
             }}
           />
-      
+
+          <Stack.Screen
+            name="EditProfile"
+            component={EditProfile}
+            options={{
+              headerStyle: {
+                backgroundColor: Colors.primaryColor,
+              },
+              title: 'Edit profile',
+            }}
+          />
+
         </Stack.Navigator>
       </NavigationContainer>
     </View>
