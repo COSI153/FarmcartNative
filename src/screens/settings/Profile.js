@@ -8,7 +8,7 @@
 // import dependencies
 import React, {Component} from 'react';
 import {
-  Text,Alert,SafeAreaView,ScrollView,StatusBar,StyleSheet,View,
+  Text,Alert,SafeAreaView,ScrollView,StatusBar,StyleSheet,View,FlatList
 } from 'react-native';
 
 import Avatar from '../../components/avatar/Avatar';
@@ -17,6 +17,10 @@ import {Heading6, Subtitle1, Subtitle2} from '../../components/text/CustomText';
 import TouchableItem from '../../components/TouchableItem';
 import Colors from '../../theme/colors';
 import Button from '../../components/buttons/Button';
+
+// Jae June25,2020
+import tmpUserData from './tmpUserData';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -56,9 +60,14 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: '500',
     textAlign: 'left',
+    paddingVertical: 8,
   },
   email: {
-    paddingVertical: 2,
+    paddingVertical: 8,
+  },
+  orderHistory: {
+    paddingVertical: 8,
+    margin: 10,
   },
   sectionHeader: {
     paddingTop: 16,
@@ -78,14 +87,30 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
   },
+  bottom: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 50,
+    marginTop: 400,
+  },
 });
 
 // SetingsB
 export default class Porfile extends Component {
   constructor(props) {
     super(props);
+    //this.state = {};
 
-    this.state = {};
+    // (Jae) temporary data retreival from tmpUserData
+    // will be retrieved from database
+    const currUserId = 102;
+    const currUser = tmpUserData.filter((user) => {
+      return user.id === currUserId;
+    })
+
+    this.state = {currUser: currUser[0]};
+
+
   }
 
   navigateTo = (screen) => () => {
@@ -103,6 +128,7 @@ export default class Porfile extends Component {
       ],
       {cancelable: false},
     );
+
   };
 
   render() {
@@ -118,36 +144,50 @@ export default class Porfile extends Component {
             <Heading6 style={styles.titleText}>My Profile</Heading6>
           </View>
 
-          <TouchableItem useForeground onPress={this.navigateTo('EditProfile')}>
-            <View style={[styles.row, styles.profileContainer]}>
-              <View style={styles.leftSide}>
-                <Avatar
-                  imageUri={require('../../assets/img/profile_1.jpeg')}
-                  size={60}
-                  rounded
-                />
-                <View style={styles.profileInfo}>
-                  <Subtitle1 style={styles.name}>User Name</Subtitle1>
-                  <Subtitle2 style={styles.email}>
-                    testuser@gmail.com
-                  </Subtitle2>
-                </View>
+
+          <View style={[styles.row, styles.profileContainer]}>
+            <View style={styles.leftSide}>
+              <Avatar
+                imageUri={require('../../assets/img/profile_1.jpeg')}
+                size={60}
+                rounded
+              />
+              <View style={styles.profileInfo}>
+                <Subtitle1 style={styles.name}> {this.state.currUser.name}     </Subtitle1>
+                <Subtitle2 style={styles.email}> {this.state.currUser.email}   </Subtitle2>
+                <Subtitle2 style={styles.address}> {this.state.currUser.address}   </Subtitle2>
               </View>
             </View>
-          </TouchableItem>
+          </View>
 
           <Divider />
-          <Text>
-            This is the place for Order History.
+          <Button
+            title = "Edit profile"
+            onPress={this.navigateTo('EditProfile')}
+            setting="Edit profile"
+            type="editprofile"
+          />
+
+
+          <Text style={{fontWeight: '600'}}>
+              {"\n"}Order History:
           </Text>
-          <Divider />
+          <View style={styles.orderHistory}>
+            <Text>
+              {this.state.currUser.orderHistory}
+            </Text>
+          </View>
+
+
+          <View style={styles.bottom}>
           <Button
             title = "Log out"
             onPress={this.logout}
-       
+
             setting="Log Out"
             type="logout"
           />
+          </View>
         </ScrollView>
       </SafeAreaView>
     );
