@@ -21,9 +21,7 @@ import EditProfile from '../screens/settings/EditProfile';
 // import colors
 import Colors from '../theme/colors';
 
-
 const SAVE_ICON = Platform.OS === 'ios' ? 'ios-checkmark' : 'md-checkmark';
-
 
 const Stack = createStackNavigator();
 
@@ -57,7 +55,6 @@ function MainNavigator() {
             headerTintColor: Colors.onPrimaryColor,
             headerTitleAlign: 'center',
           }}>
-
           <Stack.Screen
             name="Welcome"
             component={Welcome}
@@ -120,7 +117,6 @@ function MainNavigator() {
               title: 'Edit profile',
             }}
           />
-
         </Stack.Navigator>
       </NavigationContainer>
     </View>

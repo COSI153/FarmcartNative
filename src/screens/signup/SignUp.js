@@ -6,11 +6,10 @@
  */
 
 // import dependencies
-import React, { useState } from "react";
-import { StyleSheet, Text, Image } from "react-native";
-import Screen from "../../components/Screen";
-import Button from "../../components/buttons/Button";
-import AppTextInput from "../../components/AppTextInput";
+import React, {useState} from 'react';
+import {StyleSheet, Text, Image, View} from 'react-native';
+import Button from '../../components/buttons/Button';
+import AppTextInput from '../../components/AppTextInput';
 
 function SignUp(props) {
   const [name, setName] = useState();
@@ -18,15 +17,18 @@ function SignUp(props) {
   const [password, setPassword] = useState();
   const [address, setAddress] = useState();
 
-  navigateTo = screen => () => {
+  navigateTo = (screen) => () => {
     const {navigation} = props;
     navigation.navigate(screen);
   };
- 
+
   return (
-    <Screen style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}> Farm Cart </Text>
-      <Image style={styles.logo} source={require("../../assets/img/icon.jpg")} />
+      <Image
+        style={styles.logo}
+        source={require('../../assets/img/icon.jpg')}
+      />
 
       <AppTextInput
         autoCapitalize="none"
@@ -68,11 +70,11 @@ function SignUp(props) {
         onChangeText={(text) => setAddress(text)}
       />
 
-      <Button  
+      <Button
         onPress={this.navigateTo('HomeNavigator')}
-       title = "Create an account" />
-
-    </Screen>
+        title="Create an account"
+      />
+    </View>
   );
 }
 
@@ -82,17 +84,17 @@ const styles = StyleSheet.create({
     width: 170,
     marginBottom: -30,
     marginTop: 50,
-    alignSelf: "center",
+    alignSelf: 'center',
     fontSize: 35,
-    fontWeight: "bold",
-    color: "#423838",
+    fontWeight: 'bold',
+    color: '#423838',
   },
   logo: {
     height: 40,
     width: 80,
     marginBottom: 50,
     //marginTop: 0,
-    alignSelf: "center",
+    alignSelf: 'center',
   },
   container: {
     padding: 10,

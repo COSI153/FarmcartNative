@@ -63,7 +63,7 @@ function HomeNavigator() {
         name="Cart"
         component={Cart}
         options={{
-          tabBarIcon: props => (
+          tabBarIcon: (props) => (
             <TabBadgeIcon
               name={`cart${props.focused ? '' : '-outline'}`}
               {...props}
@@ -71,7 +71,7 @@ function HomeNavigator() {
           ),
         }}
       />
-    
+
       <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );

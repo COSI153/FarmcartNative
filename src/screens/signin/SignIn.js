@@ -7,8 +7,7 @@
 
 // import dependencies
 import React, {useState} from 'react';
-import {StyleSheet, Text, Image} from 'react-native';
-import Screen from '../../components/Screen';
+import {StyleSheet, Text, Image, View} from 'react-native';
 import Button from '../../components/buttons/Button';
 import AppTextInput from '../../components/AppTextInput';
 
@@ -20,8 +19,9 @@ function SignIn(props) {
     const {navigation} = props;
     navigation.navigate(screen);
   };
+
   return (
-    <Screen style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.text}> Farm Cart </Text>
       <Image
         style={styles.logo}
@@ -50,8 +50,8 @@ function SignIn(props) {
 
       <Button onPress={this.navigateTo('HomeNavigator')} title="Login" />
 
-      <Button onPress={this.navigateTo('SignUp')} title="New User? Sign Up" />
-    </Screen>
+      <Button onPress={this.navigateTo('SignUp')} title="Sign Up" />
+    </View>
   );
 }
 
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   container: {
+    color: '#ffffff',
     padding: 10,
   },
 });
