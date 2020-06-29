@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
   container: {
     color: '#ffffff',
     padding: 10,
+    flex: 1,
   },
 });
 

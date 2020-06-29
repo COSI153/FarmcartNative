@@ -1,18 +1,10 @@
-/**
- * Food Delivery - React Native Template
- *
- * @format
- * @flow
- */
-
-// import dependencies
 import React from 'react';
-import {View, Image, Text, StyleSheet, backgroundColor} from 'react-native';
+import {View, Image, Text, StyleSheet} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import Button from '../../components/buttons/Button';
 import PublisherDetail from '../../components/PublisherDetail';
 
-function ProductDetail({navigation}) {
+function ListingDetailScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.icon}>
@@ -29,7 +21,7 @@ function ProductDetail({navigation}) {
       />
       <View style={styles.detailContainer}>
         <Text style={styles.name}>Lemons</Text>
-        <Text style={styles.price}>$2.14/pound</Text>
+        <Text style={styles.price}>$2.14/pound </Text>
         <Text style={styles.stock}>In Stock</Text>
         <Text style={styles.stock}>
           Freshness Guarantee: We guarantee that you will be satisfied with the
@@ -87,4 +79,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ProductDetail;
+export default ListingDetailScreen;

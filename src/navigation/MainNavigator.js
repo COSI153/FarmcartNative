@@ -15,12 +15,13 @@ import Welcome from '../screens/welcome/Welcome';
 import SignUp from '../screens/signup/SignUp';
 import SignIn from '../screens/signin/SignIn';
 import HomeNavigator from './HomeNavigator';
-import Product from '../screens/product/ProductDetail';
+import Product from '../screens/product/ListingDetailScreen';
 import Orders from '../screens/orders/OrdersB';
 import EditProfile from '../screens/settings/EditProfile';
 // import colors
 import Colors from '../theme/colors';
-
+import ListingDetailScreen from '../screens/product/ListingDetailScreen';
+import ProductDetail from '../screens/product/ProductDetail';
 const SAVE_ICON = Platform.OS === 'ios' ? 'ios-checkmark' : 'md-checkmark';
 
 const Stack = createStackNavigator();
@@ -89,6 +90,8 @@ function MainNavigator() {
             component={HomeNavigator}
             options={{headerShown: false}}
           />
+
+          <Stack.Screen name="ProductDetail" component={ProductDetail} />
 
           <Stack.Screen
             name="Product"

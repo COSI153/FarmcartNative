@@ -23,7 +23,7 @@ import Colors from '../../theme/colors';
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: '#ffffff',
   },
   logoContainer: {
     flex: 5,
@@ -55,7 +55,7 @@ export default class WelcomeA extends Component {
     this.state = {};
   }
 
-  navigateTo = screen => () => {
+  navigateTo = (screen) => () => {
     const {navigation} = this.props;
     navigation.navigate(screen);
   };
@@ -69,7 +69,7 @@ export default class WelcomeA extends Component {
         />
 
         <View style={styles.logoContainer}>
-          <Logo size={250}  />
+          <Logo size={250} />
         </View>
 
         <View style={styles.buttonsGroup}>
