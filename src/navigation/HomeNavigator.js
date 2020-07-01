@@ -9,6 +9,7 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {MaterialCommunityIcons as Icon} from '@expo/vector-icons';
+import {MaterialCommunityIcons} from '@expo/vector-icons';
 import TabBadgeIcon from '../components/navigation/TabBadgeIcon';
 
 // import Home screen
@@ -17,6 +18,8 @@ import Search from '../screens/search/Search';
 import Cart from '../screens/cart/Cart';
 import Profile from '../screens/settings/Profile';
 import Colors from '../theme/colors';
+import AddProductScreen from '../screens/product/AddProductScreen';
+import AddButton from '../components/buttons/AddButton';
 
 // HomeNavigator Config
 
@@ -59,6 +62,19 @@ function HomeNavigator() {
       }}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Search" component={Search} />
+      <Tab.Screen
+        name="Add"
+        component={AddProductScreen}
+        options={({navigation}) => ({
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="plus-circle"
+              color="#fc5c65"
+              size="50"
+            />
+          ),
+        })}
+      />
       <Tab.Screen
         name="Cart"
         component={Cart}

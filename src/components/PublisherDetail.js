@@ -1,15 +1,17 @@
 import React from 'react';
-import {View, StyleSheet, Image, Text} from 'react-native';
+import {View, StyleSheet, Image, Text, TouchableOpacity} from 'react-native';
 
-function PublisherDetail({image, name, location}) {
+function PublisherDetail({image, name, location, onPress}) {
   return (
-    <View style={styles.container}>
-      <Image style={styles.image} source={image} />
-      <View style={styles.detailContainer}>
-        <Text style={styles.name}>{name}</Text>
-        <Text style={styles.location}>{location}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.container}>
+        <Image style={styles.image} source={image} />
+        <View style={styles.detailContainer}>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.location}>{location}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

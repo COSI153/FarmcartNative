@@ -23,7 +23,7 @@ import Colors from '../../theme/colors';
 const styles = StyleSheet.create({
   screenContainer: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: 'white',
   },
   logoContainer: {
     flex: 5,

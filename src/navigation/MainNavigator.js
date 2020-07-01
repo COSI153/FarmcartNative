@@ -22,6 +22,7 @@ import EditProfile from '../screens/settings/EditProfile';
 import Colors from '../theme/colors';
 import ListingDetailScreen from '../screens/product/ListingDetailScreen';
 import ProductDetail from '../screens/product/ProductDetail';
+import AddProductScreen from '../screens/product/AddProductScreen';
 const SAVE_ICON = Platform.OS === 'ios' ? 'ios-checkmark' : 'md-checkmark';
 
 const Stack = createStackNavigator();
@@ -85,6 +86,12 @@ function MainNavigator() {
               title: 'Sign In',
             }}
           />
+          <Stack.Screen
+            name="AddProductScreen"
+            component={AddProductScreen}
+            options={{headerShown: false}}
+          />
+
           <Stack.Screen
             name="HomeNavigator"
             component={HomeNavigator}

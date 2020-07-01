@@ -7,54 +7,59 @@
 
 // import dependencies
 import React from 'react';
-import {View, Image, Text, StyleSheet, backgroundColor} from 'react-native';
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  backgroundColor,
+  SafeAreaView,
+} from 'react-native';
 import {Ionicons} from '@expo/vector-icons';
 import Button from '../../components/buttons/Button';
 import PublisherDetail from '../../components/PublisherDetail';
 
 function ProductDetail({navigation}) {
   return (
-    <View style={styles.container}>
-      <View style={styles.icon}>
-        <Ionicons
-          name="ios-arrow-back"
-          size={30}
-          color="black"
-          onPress={() => navigation.navigate('HomeNavigator')}
+    <SafeAreaView>
+      <View style={styles.container}>
+        <View style={styles.icon}>
+          <Ionicons
+            name="ios-arrow-back"
+            size={30}
+            color="black"
+            onPress={() => navigation.navigate('HomeNavigator')}
+          />
+        </View>
+        <Image
+          style={styles.image}
+          source={require('../../assets/img/farmproductimage/lemons.jpg')}
         />
+        <View style={styles.detailContainer}>
+          <Text style={styles.name}>Lemons</Text>
+          <Text style={styles.price}>$2.14/pound</Text>
+          <Text style={styles.stock}>In Stock</Text>
+          <Text style={styles.stock}>
+            Freshness Guarantee: We guarantee that you will be satisfied with
+            the freshness and quality of this product, and that it will be
+            delivered to your home within any applicable use by, sell by, best
+            by or expiration dates.
+          </Text>
+        </View>
+        <PublisherDetail
+          name="Farm A"
+          location="South Street, Waltham, Massachusetts"
+          image={require('../../assets/img/farmsImage/farm1.jpg')}
+        />
+        <Button style={styles.Button} title="Add to Cart" />
       </View>
-      <Image
-        style={styles.image}
-        source={require('../../assets/img/farmproductimage/lemons.jpg')}
-      />
-      <View style={styles.detailContainer}>
-        <Text style={styles.name}>Lemons</Text>
-        <Text style={styles.price}>$2.14/pound</Text>
-        <Text style={styles.stock}>In Stock</Text>
-        <Text style={styles.stock}>
-          Freshness Guarantee: We guarantee that you will be satisfied with the
-          freshness and quality of this product, and that it will be delivered
-          to your home within any applicable use by, sell by, best by or
-          expiration dates.
-        </Text>
-      </View>
-      <PublisherDetail
-        name="Farm A"
-        location="South Street, Waltham, Massachusetts"
-        image={require('../../assets/img/farmsImage/farm1.jpg')}
-      />
-      <Button style={styles.Button} title="Add to Cart" />
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#ffffff',
-    paddingTop: 30,
-  },
   icon: {
     position: 'absolute',
-    top: 40,
+    //top: 40,
     left: 20,
   },
   image: {
