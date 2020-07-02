@@ -18,6 +18,7 @@ import HomeNavigator from './HomeNavigator';
 import Product from '../screens/product/ListingDetailScreen';
 import Orders from '../screens/orders/OrdersB';
 import EditProfile from '../screens/settings/EditProfile';
+import Profile from '../screens/settings/Profile';
 // import colors
 import Colors from '../theme/colors';
 import ListingDetailScreen from '../screens/product/ListingDetailScreen';
@@ -117,6 +118,17 @@ function MainNavigator() {
             }}
           />
 
+          <Stack.Screen
+            name="Profile"
+            component={Profile}
+            options={{
+              headerStyle: {
+                backgroundColor: Colors.primaryColor,
+              },
+              title: 'Profile',
+            }}
+          />
+          
           <Stack.Screen
             name="EditProfile"
             component={EditProfile}

@@ -10,6 +10,7 @@ import React, {Component} from 'react';
 import {
   Text,Alert,SafeAreaView,ScrollView,StatusBar,StyleSheet,View,FlatList
 } from 'react-native';
+import axios from 'axios';
 
 import Avatar from '../../components/avatar/Avatar';
 import Divider from '../../components/divider/Divider';
@@ -18,9 +19,9 @@ import TouchableItem from '../../components/TouchableItem';
 import Colors from '../../theme/colors';
 import Button from '../../components/buttons/Button';
 
-// Jae June25,2020
-import tmpUserData from './tmpUserData';
 
+const demoId = "5ee7753cf3ef148b28c038e0";
+const urlUsers = "http://localhost:5000/users/";
 
 const styles = StyleSheet.create({
   container: {
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'flex-end',
     marginBottom: 50,
-    marginTop: 400,
+    marginTop: 350,
   },
 });
 
@@ -99,23 +100,31 @@ const styles = StyleSheet.create({
 export default class Porfile extends Component {
   constructor(props) {
     super(props);
-    //this.state = {};
-
-    // (Jae) temporary data retreival from tmpUserData
-    // will be retrieved from database
-    const currUserId = 102;
-    const currUser = tmpUserData.filter((user) => {
-      return user.id === currUserId;
-    })
-
-    this.state = {currUser: currUser[0]};
-
+    this.state = {
+      currUser: []
+    }
 
   }
 
-  navigateTo = (screen) => () => {
+  componentDidMount() {
+    let url = `${urlUsers}${demoId}`;
+    axios.get(url).then(res => {
+      this.setState({currUser: res.data})
+    });
+  }
+
+  componentDidUpdate(){
+    let url = `${urlUsers}${demoId}`;
+    axios.get(url).then(res => {
+      this.setState({currUser: res.data})
+    });
+  }
+
+  navigateTo = (screen, params) => () => {
+    //console.log(params)
     const {navigation} = this.props;
-    navigation.navigate(screen);
+    navigation.navigate(screen, params);
+
   };
 
   logout = () => {
@@ -128,7 +137,6 @@ export default class Porfile extends Component {
       ],
       {cancelable: false},
     );
-
   };
 
   render() {
@@ -153,7 +161,7 @@ export default class Porfile extends Component {
                 rounded
               />
               <View style={styles.profileInfo}>
-                <Subtitle1 style={styles.name}> {this.state.currUser.name}     </Subtitle1>
+                <Subtitle1 style={styles.name}> {this.state.currUser.username}     </Subtitle1>
                 <Subtitle2 style={styles.email}> {this.state.currUser.email}   </Subtitle2>
                 <Subtitle2 style={styles.address}> {this.state.currUser.address}   </Subtitle2>
               </View>
@@ -163,14 +171,27 @@ export default class Porfile extends Component {
           <Divider />
           <Button
             title = "Edit profile"
-            onPress={this.navigateTo('EditProfile')}
+            onPress={ this.navigateTo('EditProfile', {currUser: this.state.currUser}) }
             setting="Edit profile"
             type="editprofile"
           />
 
+        {/*
+          <Divider />
+          <Button
+            title = "Server Test"
+            onPress={this.getDataFromServer}
+            setting="Server Test"
+            type="servertest"
+          />
+        */}
+
+
+
+
 
           <Text style={{fontWeight: '600'}}>
-              {"\n"}Order History:
+              {"\n\n\t"}location map here:
           </Text>
           <View style={styles.orderHistory}>
             <Text>
@@ -183,7 +204,6 @@ export default class Porfile extends Component {
           <Button
             title = "Log out"
             onPress={this.logout}
-
             setting="Log Out"
             type="logout"
           />
@@ -193,3 +213,9 @@ export default class Porfile extends Component {
     );
   }
 }
+
+{/*
+  axios.get('http://localhost:5000/farmproducts/').then(res => console.log(res.data));
+  axios.get(urlUsers+"5ee7753cf3ef148b28c038e0").then(res => console.log(res.data));
+    const {tmpData} =axios.get(urlUsers+"5ee7753cf3ef148b28c038e0").then(res => {console.log(res.data); return res.data;  } );
+  */}
