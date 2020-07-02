@@ -23,6 +23,7 @@ import {useState} from 'react';
 
 // APP
 function App() {
+  console.disableYellowBox = true;
   return (
     <SafeAreaProvider>
       <MainNavigator />
